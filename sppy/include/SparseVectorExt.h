@@ -59,7 +59,15 @@ class SparseVectorExt:public SparseVector<T> {
             i++; 
         }  
     }
+    void nonZeroVals(T* array) {
+        int i = 0;
 
+        for (typename SparseVectorExt<T>::InnerIterator it(*this); it; ++it) {
+            array1[i] = it.value();
+            i++;
+        }
+
+    }
     void slice(int* array1, int size1, SparseVectorExt<T> *mat) { 
         //Array indices must be sorted 
         int size1Ind = 0; 

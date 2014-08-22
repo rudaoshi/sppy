@@ -15,6 +15,8 @@ cdef extern from "include/SparseVectorExt.h":
       SparseVectorExt[T] hadamard(SparseVectorExt[T]&)
       SparseVectorExt[T] negate()
       SparseVectorExt[T] subtract(SparseVectorExt[T]&)
+      void nonZeroInds(int*)
+      void nonZeroVals(T*)
       T coeff(int)
 #      T sum()
       T sumValues()
