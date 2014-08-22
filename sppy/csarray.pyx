@@ -209,12 +209,16 @@ class csarray(object):
             colInds = numpy.array(objDict["colInds"], numpy.int32)
 
             self._array.put(objDict["values"], rowInds, colInds, True)
+
+            del objDict['rowInds']
+            del objDict['colInds']
+            del objDict['values']
+
         elif len(objDict["shape"]) == 1: 
             self._array[objDict["rowInds"]] = objDict["values"]        
         
-        del objDict['rowInds']
-        del objDict['colInds']
-        del objDict['values']
+            del objDict['rowInds']
+            del objDict['values']
        
     def __str__(self): 
         """
