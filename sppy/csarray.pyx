@@ -170,7 +170,7 @@ class csarray(object):
             objDict['values'] = self.values()
         elif len(self.shape) == 1:
             objDict['rowInds'] = self.nonzero()[0]
-            objDict['values'] = self[objDict['rowInds']]
+            objDict['values'] = self.values()
 
         return objDict
 

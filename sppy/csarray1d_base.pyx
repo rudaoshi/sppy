@@ -118,6 +118,19 @@ cdef template[DataType] class csarray1d:
         
         return (inds, )
 
+    def values(self):
+        """
+        Return the values of this object according to the elements returned
+        using nonzero.
+        """
+
+        cdef numpy.ndarray[DataType, ndim=1, mode="c"] vals = numpy.zeros(self.getnnz(), self.dtype())
+
+        if self.getnnz() != 0:
+            self.thisPtr.nonZeroVals(&vals[0])
+
+        return vals
+
     def __getitem__(self, ind):
         """
         Get a value or set of values from the array (denoted A). Currently 3 types of parameters 
