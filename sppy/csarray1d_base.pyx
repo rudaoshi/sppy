@@ -5,7 +5,7 @@ cimport numpy
 import cython 
 from libcpp.vector cimport vector
 numpy.import_array()
-
+from sppy.dtype import dataTypeDict
 
       
 cdef template[DataType] class csarray1d:  
@@ -71,6 +71,11 @@ cdef template[DataType] class csarray1d:
             raise ValueError("Invalid index " + str(ind))  
             
             
+    def dtype(self):
+        """
+        Return the dtype of the current object.
+        """
+        return dataTypeDict["DataType"]
 
     def put(self, val, numpy.ndarray[numpy.int_t, ndim=1] inds not None): 
         """
