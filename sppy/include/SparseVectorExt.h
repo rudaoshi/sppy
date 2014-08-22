@@ -63,7 +63,7 @@ class SparseVectorExt:public SparseVector<T> {
         int i = 0;
 
         for (typename SparseVectorExt<T>::InnerIterator it(*this); it; ++it) {
-            array1[i] = it.value();
+            array[i] = it.value();
             i++;
         }
 
