@@ -164,8 +164,14 @@ class csarray(object):
         objDict = {}
         objDict['shape'] = self.shape
         objDict["storagetype"] = self.storagetype
-        objDict['rowInds'], objDict['colInds'] = self.nonzero()
-        objDict['values'] = self.values()
+
+        if len(self.shape) == 2:
+            objDict['rowInds'], objDict['colInds'] = self.nonzero()
+            objDict['values'] = self.values()
+        elif len(self.shape) == 1:
+            objDict['rowInds'] = self.nonzeros()[0]
+            objDict['values'] = self[inds]
+
         return objDict
 
     def __mul__(self, A):
